@@ -8,14 +8,18 @@ var lastTimestamp = 0
 var lastLineWidth = -1
 
 var canvas = document.getElementById("canvas")
+var canvas1 = document.getElementById("canvas1")
 var context = canvas.getContext("2d")
+var context1 = canvas1.getContext("2d")
 
-canvas.width = canvasWidth
-canvas.height = canvasHeight
-
+canvas.width = canvasWidth-10;
+canvas.height = canvasHeight-10;
+canvas1.width = canvasWidth;
+canvas1.height = canvasHeight;
 $("#controller").css("width",canvasWidth+"px")
 drawGrid()
-
+$('.canvas').width(canvasWidth)
+$('.canvas').height(canvasHeight)
 $("#clear_btn").click(
     function(e){
         context.clearRect( 0 , 0 , canvasWidth, canvasHeight )
@@ -135,34 +139,40 @@ function windowToCanvas( x , y ){
 }
 function drawGrid(){
 
-    context.save()
+    context1.save()
 
-    context.strokeStyle = "rgb(230,11,9)"
+    context1.strokeStyle = "rgb(230,11,9)"
 
-    context.beginPath()
-    context.moveTo( 3 , 3 )
-    context.lineTo( canvasWidth - 3 , 3 )
-    context.lineTo( canvasWidth - 3 , canvasHeight - 3 )
-    context.lineTo( 3 , canvasHeight - 3 )
-    context.closePath()
-    context.lineWidth = 6
-    context.stroke()
+    context1.beginPath()
+    context1.moveTo( 3 , 3 )
+    context1.lineTo( canvasWidth - 3 , 3 )
+    context1.lineTo( canvasWidth - 3 , canvasHeight - 3 )
+    context1.lineTo( 3 , canvasHeight - 3 )
+    context1.closePath()
+    context1.lineWidth = 6
+    context1.stroke()
 
-    context.beginPath()
-    context.moveTo(0,0)
-    context.lineTo(canvasWidth,canvasHeight)
+    context1.beginPath()
+    context1.moveTo(0,0)
+    context1.lineTo(canvasWidth,canvasHeight)
 
-    context.moveTo(canvasWidth,0)
-    context.lineTo(0,canvasHeight)
+    context1.moveTo(canvasWidth,0)
+    context1.lineTo(0,canvasHeight)
 
-    context.moveTo(canvasWidth/2,0)
-    context.lineTo(canvasWidth/2,canvasHeight)
+    context1.moveTo(canvasWidth/2,0)
+    context1.lineTo(canvasWidth/2,canvasHeight)
 
-    context.moveTo(0,canvasHeight/2)
-    context.lineTo(canvasWidth,canvasHeight/2)
+    context1.moveTo(0,canvasHeight/2)
+    context1.lineTo(canvasWidth,canvasHeight/2)
 
-    context.lineWidth = 1
-    context.stroke()
+    context1.lineWidth = 1
+    context1.stroke()
 
-    context.restore()
+    context1.restore()
 }
+$('#baocun').click(function(){
+    var image = new Image();
+    image= canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    // alert(image.src)
+    window.location.href=image
+})

@@ -1,6 +1,19 @@
-#canvas{
+#canvas,#canvas1{
     display:block;
+    position: absolute;
+}
+#canvas{
+    z-index: 5;
+    top: 5px;
+    left: 5px;
+}
+.canvas{
+    position: relative;
     margin:0 auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
 }
 #controller{
     margin:0 auto;
